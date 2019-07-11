@@ -1,0 +1,26 @@
+<div>
+  <h2>Image Upload Through Mean Stack</h2>
+  <!-- Image Adding Module-->
+  <div class="form-upload-parent">
+    <form [formGroup]="form" (submit)="onSavePost()">
+      <input type="file" (change)="onImagePicked($event)" />
+      <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview">
+        <img [src]="imagePreview" width="200" height="200">
+      </div>
+      <button type="submit">Add Image</button>
+    </form>
+  </div>
+
+  <!-- Image Gallery Module-->
+  <div *ngFor="let image of images">
+    <div class="images-gallery">
+      <div>
+        <p>Added Image:</p>
+      </div>
+      <div class="posted-image">
+        <img [src]="image.imagePath">
+      </div>
+      <button type="button" (click)="onDelete(image.id)">Delete</button>
+    </div>
+  </div>
+</div>
